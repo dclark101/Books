@@ -1,0 +1,2 @@
+class Bookshelf:
+    pass
