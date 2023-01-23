@@ -24,7 +24,8 @@ class Books:
         try:
             res: requests.Response = requests.get(url)
         except EXCEPTIONS.RequestException as e:
-            print("Something went wrong.", e)
+            raise Exception(
+                "OOPS! Something went wrong with the API endpoint.")
         else:
             return res
 
@@ -49,8 +50,6 @@ class Books:
             items = book["items"]
         except KeyError as e:
             print(f"Key does not exist {e}")
-        except TypeError as e:
-            print("book['items']", e)
         else:
             for i in range(len(items) - 1):
                 title: str = book["items"][i]["volumeInfo"]["title"]
